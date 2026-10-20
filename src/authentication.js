@@ -1,6 +1,3 @@
-import { db } from "/src/firebaseConfig.js";
-import { doc, setDoc } from "firebase/firestore";
-
 // src/authentication.js
 // ------------------------------------------------------------
 // Part of the COMP1800 Projects 1 Course (BCIT).
@@ -11,6 +8,8 @@ import { doc, setDoc } from "firebase/firestore";
 
 // Import the initialized Firebase Authentication object
 import { auth } from "/src/firebaseConfig.js";
+import { db } from "/src/firebaseConfig.js";
+import { doc, setDoc } from "firebase/firestore";
 
 // Import specific functions from the Firebase Auth SDK
 import {
@@ -53,6 +52,15 @@ export async function loginUser(email, password) {
 // Usage:
 //   const user = await signupUser("Alice", "alice@email.com", "secret");
 // -------------------------------------------------------------
+// export async function signupUser(name, email, password) {
+//   const userCredential = await createUserWithEmailAndPassword(
+//     auth,
+//     email,
+//     password,
+//   );
+//   await updateProfile(userCredential.user, { displayName: name });
+//   return userCredential.user;
+// }
 export async function signupUser(name, email, password) {
   const userCredential = await createUserWithEmailAndPassword(
     auth,
@@ -89,6 +97,36 @@ export async function signupUser(name, email, password) {
   // Return the user object for further use (e.g., redirecting or showing a welcome message)
   return user;
 }
+
+// -------------------------------------------------------------
+// logoutUser()
+// -------------------------------------------------------------
+// Signs out the currently logged-in user and redirects them
+// back to the login page (index.html).
+//
+// Usage:
+//   await logoutUser();
+// -------------------------------------------------------------
+export async function logoutUser() {
+  await signOut(auth);
+  window.location.href = "index.html";
+}
+
+// -------------------------------------------------------------
+// checkAuthState()
+// -------------------------------------------------------------
+// Observes changes in the user's authentication state (login/logout)
+// and updates the UI or redirects accordingly.
+//
+// If the user is on "main.html":
+//   - If logged in → displays "Hello, [Name]!"
+//   - If not logged in → redirects to "index.html"
+//
+// This function should be called once when the page loads.
+//
+// Usage:
+//   checkAuthState();
+// -------------------------------------------------------------
 export function checkAuthState() {
   onAuthStateChanged(auth, (user) => {
     if (window.location.pathname.endsWith("main.html")) {

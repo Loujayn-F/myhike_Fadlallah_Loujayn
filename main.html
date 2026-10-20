@@ -31,6 +31,24 @@
         <p>Quote of the day: <span id="quote-goes-here"></span></p>
       </div>
     </div>
+    <div class="container-fluid bg-body text-dark p-5">
+      <h1>Popular Hikes</h1>
+      <div id="hikes-go-here" class="row"></div>
+    </div>
+
+    <template id="hikeCardTemplate">
+      <div class="col">
+        <div class="card">
+          <img class="card-img-top card-image" src="..." alt="Hike Image" />
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+            <p>Length: <span class="card-length"></span> km</p>
+            <a class="btn btn-primary read-more" href="#">Read More</a>
+          </div>
+        </div>
+      </div>
+    </template>
     <!-- our own footer goes here -->
     <site-footer></site-footer>
 
