@@ -82,6 +82,20 @@
             placeholder="What makes this hike special?"
           ></textarea>
         </div>
+        <div class="mb-3">
+          <label for="imageInput" class="form-label">Photo (optional)</label>
+          <input
+            type="file"
+            id="imageInput"
+            class="form-control"
+            accept="image/*"
+          />
+          <img
+            id="imagePreview"
+            class="img-fluid rounded mt-2 d-none"
+            alt="Preview"
+          />
+        </div>
         <button type="submit" class="btn btn-primary w-100">Save hike</button>
       </form>
     </main>
