@@ -29,6 +29,56 @@
         <i class="bi bi-eye-fill me-1"></i><span id="viewCount">0</span> views
       </span>
     </p>
+    <section class="container mt-4">
+      <h2>Write a review</h2>
+      <form id="reviewForm" novalidate>
+        <div class="mb-3">
+          <label for="reviewTitle" class="form-label">Title</label>
+          <input
+            type="text"
+            id="reviewTitle"
+            class="form-control"
+            placeholder="e.g. Great views!"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="reviewRating" class="form-label">Rating</label>
+          <select id="reviewRating" class="form-select">
+            <option value="5">5 – Loved it</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1 – Never again</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="reviewText" class="form-label">Review</label>
+          <textarea
+            id="reviewText"
+            class="form-control"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit review</button>
+      </form>
+    </section>
+
+    <section class="container mt-4 card shadow-sm bg-light">
+      <h2>Latest reviews</h2>
+      <div id="reviews-go-here"></div>
+    </section>
+
+    <template id="reviewTemplate">
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5 class="card-title review-title"></h5>
+          <h6 class="card-subtitle mb-2 text-muted review-meta"></h6>
+          <p class="card-text review-text"></p>
+        </div>
+      </div>
+    </template>
     <!-- our own footer goes here -->
     <site-footer></site-footer>
 

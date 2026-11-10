@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My BCIT Project</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Web Components for shared navbar and footer layout -->
+    <script type="module" src="/src/components/site-navbar.js"></script>
+    <script type="module" src="/src/components/site-footer.js"></script>
+  </head>
+
+  <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
+
+    <!-- our own navbar goes here -->
+    <site-navbar></site-navbar>
+    <main class="container py-4">
+      <h1 id="hikeName">Loading...</h1>
+      <img
+        id="hikeImage"
+        class="img-fluid rounded mt-3"
+        src=""
+        alt="Hike image"
+      />
+    </main>
+    <!-- Main content goes here -->
+    <main class="container py-4" style="max-width: 720px">
+      <!-- Header: avatar + name + email -->
+      <div class="d-flex align-items-center gap-3 mb-4">
+        <div
+          id="avatar"
+          class="rounded-circle bg-warning fw-bold fs-3 d-flex align-items-center justify-content-center"
+          style="width: 64px; height: 64px"
+        >
+          ?
+        </div>
+        <div>
+          <h1 id="profileName" class="h3 mb-0">My profile</h1>
+          <small id="profileEmail" class="text-muted"></small>
+        </div>
+      </div>
+
+      <!-- Section 1: About me -->
+      <div class="card shadow-sm mb-5">
+        <div class="card-body">
+          <h2 class="h5 card-title mb-3">
+            <i class="bi bi-person-fill me-1"></i>About me
+          </h2>
+          <div
+            id="profileAlert"
+            class="alert alert-success d-none"
+            role="alert"
+          ></div>
+
+          <form id="profileForm" novalidate>
+            <div class="mb-3">
+              <label for="nameInput" class="form-label">Name</label>
+              <input type="text" id="nameInput" class="form-control" disabled />
+            </div>
+            <div class="mb-3">
+              <label for="countryInput" class="form-label">Country</label>
+              <input
+                type="text"
+                id="countryInput"
+                class="form-control"
+                disabled
+              />
+            </div>
+            <div class="mb-3">
+              <label for="schoolInput" class="form-label">School</label>
+              <input
+                type="text"
+                id="schoolInput"
+                class="form-control"
+                disabled
+              />
+            </div>
+            <div class="mb-3">
+              <label for="bioInput" class="form-label">About me</label>
+              <textarea
+                id="bioInput"
+                class="form-control"
+                rows="3"
+                disabled
+              ></textarea>
+            </div>
+            <button
+              type="button"
+              id="editBtn"
+              class="btn btn-outline-secondary"
+            >
+              <i class="bi bi-pencil me-1"></i>Edit
+            </button>
+            <button type="submit" id="saveBtn" class="btn btn-success" disabled>
+              <i class="bi bi-check-lg me-1"></i>Save
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Section 2: My favourite hikes -->
+      <h2 class="h5 mb-3">
+        <i class="bi bi-heart-fill text-danger me-1"></i>My favourite hikes
+      </h2>
+      <div id="hikes-go-here" class="row row-cols-1 row-cols-md-2 g-3"></div>
+    </main>
+
+    <template id="hikeCardTemplate">
+      <div class="col">
+        <div class="card position-relative">
+          <img class="card-img-top card-image" src="..." alt="Hike Image" />
+          <i
+            class="bi bi-heart text-danger fs-4 fav-btn position-absolute top-0 end-0 m-2"
+            role="button"
+            title="Favourite"
+          ></i>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text"></p>
+            <p>Length: <span class="card-length"></span> km</p>
+            <a class="btn btn-primary read-more" href="#">Read More</a>
+          </div>
+        </div>
+      </div>
+    </template>
+    <!-- our own footer goes here -->
+    <site-footer></site-footer>
+
+    <!---------------------------------------------->
+    <!-- Your own JavaScript scripts go here      -->
+    <!---------------------------------------------->
+
+    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/profile.js"></script>
+  </body>
+</html>
